@@ -1,0 +1,19 @@
+.banner {
+    height: auto;
+    background-size: cover;
+    background-position: center center;
+}
+.banner-transform {
+    animation-name: enlarge;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+}
+@keyframes enlarge {
+    from {
+        width: 100%;
+        height: 100%;
+    }
+    to {
+        transform: scale(1.3);
+    }
+}

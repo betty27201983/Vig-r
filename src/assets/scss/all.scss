@@ -1,0 +1,15 @@
+@import "components/title";
+@import "base/base";
+@import "components/banner";
+@import "components/hover";
+@import "components/textEffect";
+@import "components/images";
+@import "components/fontFamily";
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap');
+
+@import "~bootstrap/scss/functions";
+@import "./helpers/variables";
+@import "~bootstrap/scss/mixins";
+
+@import "~bootstrap/scss/bootstrap";
