@@ -11,11 +11,10 @@
             <div class="position-absolute top-0 start-100 translate-middle bg-secondary text-center p-1 text-white rounded-pill" style="width: 2rem; height:2rem;">3</div>
           </div>
 
-          <h2><i class="bi bi-bag-check-fill pe-2"></i>購物車<span class="fs-6 text-muted">/確認購物車品項</span></h2>
-          <div class="text-center" v-if="cart.carts !== undefined && cart.carts.length <= 0">
+          <h2 class="mb-5"><i class="bi bi-bag-check-fill pe-2"></i>購物車<span class="fs-6 text-muted">/確認購物車品項</span></h2>
+          <div class="text-center mb-5" v-if="cart.carts !== undefined && cart.carts.length <= 0">
             <i class="bi bi-cart4 display-1 fw-bold text-primary"></i>
             <p class="bg-light text-primary fs-4 p-3">購物車目前無商品，歡迎選購</p>
-            <router-link to="/item" class="btn btn-primary mb-5">前往逛逛！</router-link>
           </div>
           <table class="table align-middle" v-else>
             <thead>
@@ -70,15 +69,20 @@
             </tfoot>
           </table>
           <div class="d-flex justify-content-between">
-          <div class="input-group mb-3 input-group-sm w-50">
-            <input type="text" class="form-control" v-model="coupon_code" placeholder="請輸入優惠碼">
-            <div class="input-group-append">
-              <button class="btn btn-outline-secondary" type="button" @click="addCouponCode">
-                套用優惠碼
-              </button>
+            <div class="input-group mb-3 w-50 h-50">
+              <input type="text" class="form-control" v-model="coupon_code" placeholder="請輸入優惠碼">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" @click="addCouponCode">
+                  套用優惠碼
+                </button>
+              </div>
             </div>
-          </div>
-          <router-link to="/cartInfo" type="button" class="btn btn-outline-primary h-50">前往結帳<i class="bi bi-caret-right-fill ms-1"></i></router-link>
+            <div v-if="cart.carts !== undefined && cart.carts.length <= 0">
+              <router-link to="/item" class="btn btn-outline-primary mb-5">開始選購<i class="bi bi-caret-right-fill ms-1"></i></router-link>
+            </div>
+            <div v-else>
+              <router-link to="/cartInfo" type="button" class="btn btn-outline-primary">前往結帳<i class="bi bi-caret-right-fill ms-1"></i></router-link>
+            </div>
           </div>
         </div>
   </div>

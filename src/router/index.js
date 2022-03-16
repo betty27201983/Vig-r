@@ -5,6 +5,9 @@ const routes = [
     path: '/',
     name: 'Home',
     component: () => import('../views/FrontBoard.vue'),
+    meta: {
+      title: 'Vigor'
+    },
     children: [
       {
         path: '',
@@ -61,12 +64,18 @@ const routes = [
   {
     path: '/login',
     name: 'Login',
-    component: () => import('../views/backend/Login.vue')
+    component: () => import('../views/backend/Login.vue'),
+    meta: {
+      title: '使用者登入'
+    }
   },
   {
     path: '/dashboard',
     name: 'Dashboard',
     component: () => import('../views/backend/Dashboard.vue'),
+    meta: {
+      title: '後台管理頁面'
+    },
     children: [
       {
         path: 'products',
@@ -97,6 +106,17 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes,
   linkActiveClass: 'active'
+})
+
+router.beforeEach((to, from, next) => {
+  // beforeEach是router的鉤子函数，在進入路由前執行
+  if (to.meta.title) {
+    // 判斷是否有標題
+    document.title = to.meta.title
+  } else {
+    document.title = 'Vigor'
+  }
+  next()
 })
 
 export default router
